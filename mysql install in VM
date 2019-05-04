@@ -14,6 +14,11 @@ wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
 [root@bogon keyb-cenos]# grep 'temporary password' /var/log/mysqld.log
 [root@bogon keyb-cenos]# mysql -u root -p
 
+
+修改密码可参考：
+https://www.jb51.net/article/95399.htm
+
+
 Yum Repository,以后每次 yum 操作都会自动更新，需要把这个卸载掉
 [root@localhost ~]# yum -y remove mysql57-community-release-el7-10.noarch
 
