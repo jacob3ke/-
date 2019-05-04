@@ -1,0 +1,48 @@
+install mysql due to need of learning web（from liaoxuefeng）
+
+mysql57
+
+
+install with root authentication
+
+ 
+【following tutorial from https://blog.csdn.net/baidu_32872293/article/details/80557668 】
+wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+[root@bogon keyb-cenos]# yum -y install mysql57-community-release-el7-10.noarch.rpm
+[root@bogon keyb-cenos]# yum -y install mysql-community-server
+[root@bogon keyb-cenos]# systemctl start mysqld
+[root@bogon keyb-cenos]# grep 'temporary password' /var/log/mysqld.log
+[root@bogon keyb-cenos]# mysql -u root -p
+
+Yum Repository,以后每次 yum 操作都会自动更新，需要把这个卸载掉
+[root@localhost ~]# yum -y remove mysql57-community-release-el7-10.noarch
+
+为了让 MySQL支持中文，需要把字符集改成UTF-8，方法如下：
+# vim /etc/mycnf
+
+改成如下内容：
+[client]
+port=3306
+socket=/var/lib/mysql/mysql.sock
+default-character-set=utf8
+
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+character-set-server=utf8
+
+[mysql]
+no-auto-rehash
+default-character-set=utf8
+
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+--------------------- 
+作者：zengrui_0337 
+来源：CSDN 
+原文：https://blog.csdn.net/baidu_32872293/article/details/80557668 
+版权声明：本文为博主原创文章，转载请附上博文链接！
