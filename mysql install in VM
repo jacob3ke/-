@@ -18,7 +18,7 @@ Yum Repository,以后每次 yum 操作都会自动更新，需要把这个卸载
 [root@localhost ~]# yum -y remove mysql57-community-release-el7-10.noarch
 
 为了让 MySQL支持中文，需要把字符集改成UTF-8，方法如下：
-# vim /etc/mycnf
+# vim /etc/my.cnf
 
 改成如下内容：
 [client]
@@ -41,8 +41,4 @@ default-character-set=utf8
 [mysqld_safe]
 log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
---------------------- 
-作者：zengrui_0337 
-来源：CSDN 
-原文：https://blog.csdn.net/baidu_32872293/article/details/80557668 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+
